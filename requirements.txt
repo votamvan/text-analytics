@@ -1,0 +1,12 @@
+pyvi
+pandas>=0.24.1
+spacy>=2.0.18
+gensim>=3.7.1
+scikit-learn>=0.20.2
+keras
+keras-self-attention==0.35.0
+keras-multi-head==0.16.0
+keras-layer-normalization==0.10.0
+annoy==1.15.1
+gdown
+langdetect
