@@ -6,3 +6,4 @@ tests/*
 notebooks/*
 .vscode/*
 scripts/data/*
+export-model/*
