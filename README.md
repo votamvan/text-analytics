@@ -1,4 +1,4 @@
-# simple-sentiment
+# text analytics
 model wt103
 
 /content/simple-sentiment/data/aclImdb/models/wt103/   
