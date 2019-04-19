@@ -5,3 +5,4 @@ resources/*
 tests/*
 notebooks/*
 .vscode/*
+scripts/data/*
