@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
+import sys
+sys.path.append("..")
+
+import os
 from pathlib import Path
 import html
 import re
-import os
 import numpy as np
 import pandas as pd
+
+from sentiment.config import RESOURCE_PATH
 
 DO_DOWNLOAD = False
 if DO_DOWNLOAD:
@@ -26,7 +31,7 @@ def fixup(x):
         ' @-@ ','-').replace('\\', ' \\ ')
     return re1.sub(' ', html.unescape(x))
 
-CLASSES = ['neg', 'pos', 'unsup']
+CLASSES = ['pos', 'neg', 'unsup']
 def get_texts(path):
     texts,labels = [],[]
     for idx,label in enumerate(CLASSES):
@@ -50,8 +55,9 @@ trn_labels = trn_labels[trn_idx]
 val_labels = val_labels[val_idx]
 df_trn = pd.DataFrame({'text':trn_texts, 'labels':trn_labels}, columns=col_names)
 df_val = pd.DataFrame({'text':val_texts, 'labels':val_labels}, columns=col_names)
-df_trn[df_trn['labels']!=2].to_csv('imdb-train.csv', header=False, index=False)
-df_val.to_csv('imdb-test.csv', header=False, index=False)
 
-with open('imdb-classes.txt', 'w', encoding='utf-8') as f:
-    f.writelines(f'{o}\n' for o in CLASSES)
+df_trn['text'] = df_trn['text'].apply(fixup)
+df_val['text'] = df_val['text'].apply(fixup)
+df_trn[df_trn['labels']!=2].to_csv(RESOURCE_PATH/'data/imdb-train.csv', header=False, index=False)
+df_val.to_csv(RESOURCE_PATH/'data/imdb-test.csv', header=False, index=False)
+(RESOURCE_PATH/'data/imdb-classes.txt').open('w', encoding='utf-8').writelines(f'{o}\n' for o in CLASSES)
