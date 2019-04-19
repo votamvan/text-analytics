@@ -11,3 +11,5 @@ wget http://files.fast.ai/models/wt103/itos_wt103.pkl
 google cloud gpu
 https://cloud.google.com/compute/docs/gpus/add-gpus#install-driver-script
 
+Demo preview
+![text analytics](http://url/to/img.png)

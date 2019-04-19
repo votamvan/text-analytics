@@ -1,5 +1,5 @@
 from pathlib import Path
+import os
 
-RESOURCE_PATH = Path("/Users/vanvt/simple-sentiment/resources")
-if not RESOURCE_PATH.exists():
-    RESOURCE_PATH.mkdir()
+_path = os.getenv("RESOURCE_PATH", "/Users/vanvt/2019/text-analytics/resources/")
+RESOURCE_PATH = Path(_path)
